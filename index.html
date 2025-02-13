@@ -28,7 +28,6 @@
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 200px 1fr;
             gap: 2rem;
         }
 
@@ -58,7 +57,7 @@
         .main-content {
             margin-left: 220px;
             padding-right: 2rem;
-            width: calc(100% - 220px);
+            width: 100%;
         }
 
         .event-card {
@@ -97,23 +96,21 @@
 
         .timestamp {
             color: #666;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
+            margin-bottom: 1.0rem;
+            font-size: 1.0rem;
         }
 
         .event-title {
             color: #4caf9c;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             font-size: 2rem;
             letter-spacing: -1px;
         }
 
         .event-description {
             color: #999;
-            line-height: 2;
-            font-size: 1.4rem;
+            font-size: 1.0rem;
             width: 100%;
-            max-width: none;
         }
 
         .location {
@@ -179,7 +176,7 @@
                         "on my cheek."
                     ],
                     location: "Kreuzberg, Berlin",
-                    image: "berghain-valentine/images/bus.jpg"
+                    image: "/images/bus.jpg"
                 },
                 {
                     date: "Few days later",
@@ -189,7 +186,7 @@
                         "cutest guy on earth as he cooked for me"
                     ],
                     location: "Kotbusser Tor, Berlin",
-                    image: "berghain-valentine/images/cook.jpg"
+                    image: "/images/cook.jpg"
                 },
                 {
                     date: "August 7, 2024",
@@ -199,7 +196,7 @@
                         "but I think I have feelings for him",
                     ],
                     location: "Teufelssee",
-                    image: "berghain-valentine/images/lake.jpg"
+                    image: "/images/lake.jpg"
                 }
             ];
 
@@ -260,3 +257,4 @@
     </script>
 </body>
 </html>
+<p>Type HTML in the textarea above, and it will magically appear in the frame below.</p>
