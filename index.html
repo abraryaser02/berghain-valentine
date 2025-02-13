@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Berlin Story</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Space Mono', monospace;
+        }
+
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 2rem;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 2rem;
+        }
+
+        .logo {
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            color: #e0e0e0;
+        }
+
+        .nav-item {
+            color: #666;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+            text-transform: lowercase;
+        }
+
+        .nav-item:hover {
+            color: #e0e0e0;
+        }
+
+        .main-content {
+            margin-left: 220px;
+            padding-right: 2rem;
+        }
+
+        .event-card {
+            background-color: #1a1a1a;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.5s forwards;
+            position: relative;
+            width: 100%;
+        }
+
+        .image-card {
+            background: #4caf9c;
+            padding: 1rem;
+            transform: rotate(-2deg);
+            margin-bottom: 2rem;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .content-section {
+            padding: 2rem;
+            transform: rotate(-1deg);
+            background: #1a1a1a;
+            margin-top: -1rem;
+        }
+
+        .timestamp {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .event-title {
+            color: #4caf9c;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            letter-spacing: -1px;
+        }
+
+        .event-description {
+            color: #999;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            max-width: 800px;
+        }
+
+        .location {
+            color: #666;
+            margin-top: 2rem;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .button {
+            background: none;
+            border: 1px solid #4caf9c;
+            color: #4caf9c;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            font-family: 'Space Mono', monospace;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 2rem;
+            font-size: 1rem;
+        }
+
+        .button:hover {
+            background: #4caf9c;
+            color: #121212;
+        }
+
+        .final-message {
+            background: #1a1a1a;
+            padding: 3rem;
+            animation: fadeIn 0.5s forwards;
+            transform: rotate(-1deg);
+        }
+
+        .description-line {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function ValentinePage() {
+            const [currentSection, setCurrentSection] = React.useState('program');
+            const [step, setStep] = React.useState(0);
+
+            const memories = [
+                {
+                    date: "Summer 2024",
+                    title: "Kotbusser Tor",
+                    description: [
+                        "Taken during the bus ride back",
+                        "to Neukolln. Thinking about your kiss",
+                        "on my cheek."
+                    ],
+                    location: "Kreuzberg, Berlin",
+                    image: "/images/bus.jpg"
+                },
+                {
+                    date: "Few days later",
+                    title: "Cooking",
+                    description: [
+                        "Taken when I was mesmerized by the",
+                        "cutest guy on earth as he cooked for me"
+                    ],
+                    location: "Kotbusser Tor, Berlin",
+                    image: "/images/cook.jpg"
+                },
+                {
+                    date: "August 7, 2024",
+                    title: "Lake Date",
+                    description: [
+                        "The day I realized oh shit this guy is crazy,",
+                        "but I think I have feelings for him",
+                    ],
+                    location: "Teufelssee",
+                    image: "/images/lake.jpg"
+                }
+            ];
+
+            return (
+                <div className="container">
+                    <div className="sidebar">
+                        <div className="logo">[♥]</div>
+                        <div className="nav-item">Program</div>
+                        <div className="nav-item">Message</div>
+                        <div className="nav-item">Location</div>
+                    </div>
+
+                    <div className="main-content">
+                        {memories.slice(0, step).map((memory, index) => (
+                            <div key={index} className="event-card">
+                                <div className="image-card">
+                                    <img src={memory.image} alt={memory.title} />
+                                </div>
+                                <div className="content-section">
+                                    <div className="timestamp">{memory.date}</div>
+                                    <div className="event-title">{memory.title}</div>
+                                    <div className="event-description">
+                                        {memory.description.map((line, i) => (
+                                            <div key={i} className="description-line">{line}</div>
+                                        ))}
+                                    </div>
+                                    <div className="location">{memory.location}</div>
+                                </div>
+                            </div>
+                        ))}
+
+                        {step < memories.length ? (
+                            <button className="button" onClick={() => setStep(step + 1)}>
+                                {step === 0 ? "Start" : "Next"}
+                            </button>
+                        ) : (
+                            <div className="final-message">
+                                <div className="event-title">Happy Valentine's Day</div>
+                                <div className="event-description">
+                                    {[
+                                        "Happy Valentine's Day Michael,",
+                                        "from Kotti to Claremont",
+                                        "I love you from every corner of this world,",
+                                        "my Berghain lover boy"
+                                    ].map((line, i) => (
+                                        <div key={i} className="description-line">{line}</div>
+                                    ))}
+                                </div>
+                                <div className="timestamp">14.02.2025</div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<ValentinePage />, document.getElementById('root'));
+    </script>
+</body>
+</html>
